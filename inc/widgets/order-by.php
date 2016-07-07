@@ -59,7 +59,7 @@ class ocin_lite_Order_by extends WP_Widget{
 
         $instance = $old_instance;
 
-        $instance['title'] = strip_tags( $new_instance['title'] );
+        $instance['title'] = sanitize_text_field( $new_instance['title'] );
 
         return $instance;
 

@@ -10,9 +10,10 @@
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 	return;
 }
-
-if ( is_woocommerce() ) {
-	return;
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	if ( is_woocommerce() ) {
+		return;
+	}
 }
 ?>
 <aside id="sidebar" class="col-md-4 widget-area" role="complementary">

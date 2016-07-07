@@ -327,7 +327,7 @@ add_action( 'woocommerce_checkout_order_review', 'ocin_lite_checkout_payment_aft
 add_action( 'wp_enqueue_scripts', 'ocin_lite_remove_woo_lightbox', 99 );
 function ocin_lite_remove_woo_lightbox() {
 	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-    	remove_action( 'wp_head', array( $GLOBALS['ocin-lite'], 'generator' ) );
+    	remove_action( 'wp_head', array( $GLOBALS['woocommerce'], 'generator' ) );
         wp_dequeue_style( 'woocommerce_prettyPhoto_css' );
         wp_dequeue_script( 'prettyPhoto' );
         wp_dequeue_script( 'prettyPhoto-init' );

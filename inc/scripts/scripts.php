@@ -1,6 +1,4 @@
 <?php
-
-	wp_enqueue_script( 'jquery' );
 	
 	//HTML5 Shiv ==============================================
 	wp_enqueue_script( 'html5shiv', get_template_directory_uri() . '/js/html5shiv.js', array(), '3.7.3', true );
@@ -11,8 +9,7 @@
 	//=================================================================
 
 	//photoSwipe and UI Plugin ==============================================
-	wp_register_script( 'photoswipe-and-ui', get_template_directory_uri() . '/js/photoswipe-ui-default.js', array('jquery'), '4.0.8', true );
-	wp_enqueue_script( 'photoswipe-and-ui' );
+	wp_enqueue_script( 'photoswipe-and-ui', get_template_directory_uri() . '/js/photoswipe-ui-default.js', array( 'jquery' ), '4.0.8', true );
 	//=================================================================
 
 	//Modernizr Plugin ================================================

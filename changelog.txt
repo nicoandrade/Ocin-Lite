@@ -1,3 +1,26 @@
+* 1.0.5 - 07/07/2016
+====================
+- Removed: Redirect after theme installation
+- Fixed: Issues on Theme Info page
+- Fixed: Issue with menu
+
+
+* 1.0.4 - 04/07/2016
+====================
+- Removed: Deprecated tags in style.css
+- Added: Credits to TGMPA
+- Added: Theme Info page
+- Changed: Footer text
+- Removed: ocin_lite_get_custom_css()
+- Updated: TGMPA class
+- Fixed: Error when WooCommerce was not active
+
+
+* 1.0.3 - 15/02/2016
+====================
+- Updated: theme version
+
+
 * 1.0.2 - 10/02/2016
 ====================
 - Added: Hover effect for post thumbnails

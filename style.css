@@ -4,11 +4,11 @@ Theme URI: https://www.quemalabs.com/theme/ocin-lite/
 Author: Quema Labs
 Author URI: https://www.quemalabs.com/
 Description: Ocin Lite is a beautiful WooCommerce theme perfect for modern and clean online shops. With a responsive design will make your online store  look great on all devices.
-Version: 1.0.2
+Version: 1.0.5
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Text Domain: ocin-lite
-Tags: light, white, gray, right-sidebar, two-columns, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, photoblogging
+Tags: right-sidebar, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 */
 /*
 ----------------------------------------------------------------
@@ -142,6 +142,12 @@ Nav Menu
   display: block;
   min-height: 0;
 }
+.menu-center #jqueryslidemenu {
+  text-align: center;
+}
+.bottom-menu #jqueryslidemenu {
+  text-align: left;
+}
 /*Top level list items*/
 #jqueryslidemenu ul.nav > li {
   margin-left: 0;
@@ -156,8 +162,10 @@ Nav Menu
   -webkit-transition: all 200ms ease-in-out;
   -o-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
-  color: #777777;
+  color: #222222;
+  opacity: 0.7;
   padding: 0.71428571428571em 1.07142857142857em;
+  background-color: transparent;
 }
 #jqueryslidemenu ul.nav > li > a:hover {
   background-color: rgba(0, 0, 0, 0.02);
@@ -167,49 +175,48 @@ Nav Menu
 #jqueryslidemenu ul.nav > li > ul {
   position: absolute;
   top: 100%;
-  padding: 0;
+  padding: 15px;
+  background-color: #383838;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 .dropdown.open .dropdown-menu {
   display: none;
 }
-.dropdown:hover .dropdown-menu,
-.dropdown.open:hover .dropdown-menu {
+.dropdown:hover > .dropdown-menu,
+.dropdown.open:hover > .dropdown-menu,
+.dropdown-submenu:hover > .dropdown-menu {
   display: block;
   margin-top: 0;
-}
-#jqueryslidemenu ul.nav > li > ul > li.menu-item-has-children,
-#jqueryslidemenu ul.nav > li > ul > li.has-image {
-  float: none;
-  position: relative;
-  display: table-cell;
-  width: 220px;
-  white-space: normal;
-  padding: 15px;
-  vertical-align: top;
 }
 #jqueryslidemenu ul.nav > li > ul > li a {
   font-size: 13px;
   font-size: 0.8125rem;
-  padding: 0.5em 1.42857142857143em;
-  font-weight: bold;
+  padding: 10px 15px;
+  color: #fff;
 }
 #jqueryslidemenu ul.nav > li > ul > li.menu-item-has-children > a {
-  text-transform: uppercase;
-  border-bottom: 1px solid #777777;
-  padding-left: 0;
   white-space: normal;
 }
 #jqueryslidemenu ul.nav > li > ul > li a:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+#jqueryslidemenu .dropdown-menu > .active > a,
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: transparent;
+  outline: 0;
+}
+#jqueryslidemenu .dropdown-menu > .active > a:hover {
+  background-color: rgba(255, 255, 255, 0.02);
 }
 #jqueryslidemenu ul.nav > li > ul > li.menu-item-has-children > a:hover,
 #jqueryslidemenu ul.nav > li > ul > li.has-image > a:hover {
   background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.02);
 }
 #jqueryslidemenu ul.nav > li > ul > li .dropdown-menu {
-  display: block;
-  position: static;
-  left: 100%;
   border: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -235,43 +242,137 @@ Nav Menu
   height: auto;
 }
 /* Multi level dropdown -------*/
-.dropdown-submenu {
-  position: relative;
+.dropdown-menu .dropdown-menu {
+  background-color: #383838;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0 3px 3px 0;
 }
-.dropdown-submenu > .dropdown-menu {
-  left: 0;
-  margin-top: -6px;
-  margin-left: -1px;
-  -webkit-border-radius: 0 6px 6px 6px;
-  -moz-border-radius: 0 6px 6px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover > .dropdown-menu {
-  display: block;
-}
+/*!
+ * Bootstrap-submenu v2.0.4 (https://vsn4ik.github.io/bootstrap-submenu/)
+ * Copyright 2014-2016 Vasily A. (https://github.com/vsn4ik)
+ * Licensed under the MIT license
+ */
 .dropdown-submenu > a:after {
-  color: inherit;
-  display: block;
-  content: "\f0da";
-  float: right;
-  width: 0;
-  height: 0;
-  margin-top: 0px;
-  margin-right: -10px;
-  font-size: 14px;
-  font-size: 1rem;
-  font-family: FontAwesome;
+  content: "";
 }
-.dropdown-submenu.pull-left {
-  float: none;
+@media (min-width: 768px) {
+  .dropdown-submenu {
+    position: relative;
+  }
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    border-top-left-radius: 0;
+  }
+  .dropup .dropdown-submenu .dropdown-menu,
+  .navbar-fixed-bottom .dropdown-submenu .dropdown-menu {
+    top: auto;
+    bottom: 0;
+    margin-top: 0;
+    margin-bottom: -6px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 0;
+  }
+  .dropdown-menu-right .dropdown-submenu .dropdown-menu,
+  .navbar-right .dropdown-submenu .dropdown-menu {
+    left: auto;
+    right: 100%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0;
+  }
+  .dropup .dropdown-menu-right .dropdown-submenu .dropdown-menu,
+  .dropup .navbar-right .dropdown-submenu .dropdown-menu,
+  .navbar-fixed-bottom .dropdown-menu-right .dropdown-submenu .dropdown-menu,
+  .navbar-fixed-bottom .navbar-right .dropdown-submenu .dropdown-menu {
+    border-radius: 4px 4px 0;
+  }
+  .dropdown-submenu > a:after {
+    float: right;
+    margin-top: 6px;
+    margin-right: -10px;
+    border-left: 4px dashed;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+  .dropdown-menu-right .dropdown-submenu > a:after,
+  .navbar-right .dropdown-submenu > a:after {
+    float: left;
+    border-left: none;
+    margin-left: -10px;
+    margin-right: 0;
+    border-right: 4px dashed;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
 }
-.dropdown-submenu.pull-left > .dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  -webkit-border-radius: 6px 0 6px 6px;
-  -moz-border-radius: 6px 0 6px 6px;
-  border-radius: 6px 0 6px 6px;
+@media (max-width: 767px) {
+  .dropdown-submenu .dropdown-menu {
+    position: static;
+    margin-top: 0;
+    border: 0;
+    box-shadow: none;
+  }
+  .dropdown-submenu > a:after {
+    margin-left: 6px;
+    display: inline-block;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+  .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li.dropdown-header,
+  .dropup > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li.dropdown-header,
+  .btn-group > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li.dropdown-header,
+  .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > a,
+  .dropup > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > a,
+  .btn-group > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > a {
+    padding-left: 30px;
+  }
+  .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .dropup > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .btn-group > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > a,
+  .dropup > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > a,
+  .btn-group > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > a {
+    padding-left: 40px;
+  }
+  .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .dropup > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .btn-group > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > a,
+  .dropup > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > a,
+  .btn-group > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > a {
+    padding-left: 50px;
+  }
+  .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .dropup > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .btn-group > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > a,
+  .dropup > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > a,
+  .btn-group > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > a {
+    padding-left: 60px;
+  }
+  .navbar-nav > .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li.dropdown-header,
+  .navbar-nav > .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > a {
+    padding-left: 35px;
+  }
+  .navbar-nav > .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .navbar-nav > .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > a {
+    padding-left: 45px;
+  }
+  .navbar-nav > .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .navbar-nav > .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > a {
+    padding-left: 55px;
+  }
+  .navbar-nav > .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li.dropdown-header,
+  .navbar-nav > .dropdown > .dropdown-menu > .dropdown-submenu > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > .dropdown-menu > li > a {
+    padding-left: 65px;
+  }
 }
+/*# sourceMappingURL=bootstrap-submenu.css.map */
 /* Mobile Nav icon (Hamburguer) -----------*/
 #jqueryslidemenu .navbar-toggle .icon-bar {
   background-color: #424242;

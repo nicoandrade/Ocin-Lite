@@ -54,8 +54,9 @@ Underscores
 Source: http://underscores.me/
 
 Font Awesome icon font, Created by Dave Gandy
-Font Awesome licensed under SIL OFL 1.1 · Code licensed under MIT License
-Source: http://fortawesome.github.io/
+Font Awesome licensed under SIL OFL 1.1 http://scripts.sil.org/OFL
+Font Awesome CSS, LESS, and Sass files are licensed under the MIT License https://opensource.org/licenses/mit-license.html
+Source: http://fontawesome.io
 
 Bootstrap Created by @mdo and @fat.
 Code licensed under MIT
@@ -89,8 +90,11 @@ HTML5 Shiv by @afarkas @jdalton @jon_neal @rem
 License: MIT/GPL2 Licensed
 Source: https://github.com/afarkas/html5shiv
 
+TGM Plugin Activation
+License: GPL-2.0 or later license
+Source: http://tgmpluginactivation.com/
+
 [Lato Font](https://www.google.com/fonts/specimen/Lato) by Łukasz Dziedzic - Licensed under the [SIL Open Font License, 1.1](http://scripts.sil.org/OFL).
 
-Images from Unsplash
-License: https://unsplash.com/license
-Source: https://unsplash.com
+Images in the Screenshot are from WooCommerce dummy data
+https://github.com/woothemes/woocommerce/blob/master/dummy-data/dummy-data.xml

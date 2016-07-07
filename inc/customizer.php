@@ -37,19 +37,6 @@ function ocin_lite_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
 
-	/*
-	Logo
-	------------------------------ */
-	$wp_customize->add_section( 'ocin_lite_logo_section', array(
-		'title' => esc_attr__( 'Logo', 'ocin-lite' ),
-		'priority' => 80,
-	) );
-	$wp_customize->add_setting( 'ocin_lite_probtn_logo', array( 'default' => '', 'sanitize_callback' => 'ocin_lite_sanitize_text', ) );
-	$wp_customize->add_control( new ocin_lite_Display_Text_Control( $wp_customize, 'ocin_lite_probtn_logo', array(
-		'section' => 'ocin_lite_logo_section', // Required, core or custom.
-		'label' => sprintf( __( 'Check out the <a href="%s" target="_blank">PRO version</a> to use an image logo.', 'ocin-lite' ), 'https://www.quemalabs.com/theme/ocin/' ),
-	) ) );
-
 
 	/*
     Colors
