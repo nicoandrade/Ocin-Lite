@@ -4,7 +4,28 @@
 #accordion-section-sidebar-widgets-pricing-section{
 	margin-bottom: 15px;
 }
-
+/*
+Customizer PRO button
+*/
+#accordion-section-ocin_lite_pro_section > h3{
+  padding-left: 35px;
+  position: relative;
+}
+#accordion-section-ocin_lite_pro_section > h3::before{
+  content: "\2605";
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  line-height: 20px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  -webkit-transform: translate(0, -12px);
+  -ms-transform: translate(0, -12px);
+  -o-transform: translate(0, -12px);
+  transform: translate(0, -12px);
+  color: #ffc13f;
+}
 /*
 Theme License Box
 */
@@ -209,7 +230,7 @@ Single Documentation
 ======================================================
 */
 .help-msg-wrap {
-  text-align: right;
+  text-align: center;
 }
 .help-msg {
   padding: 15px;

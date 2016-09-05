@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Ocin Lite\n"
-"POT-Creation-Date: 2016-07-07 11:38-0300\n"
-"PO-Revision-Date: 2016-07-07 11:38-0300\n"
+"POT-Creation-Date: 2016-09-05 18:31-0300\n"
+"PO-Revision-Date: 2016-09-05 18:30-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -80,7 +80,8 @@ msgid "Website"
 msgstr ""
 
 #: footer.php:23
-msgid "Ocin Lite designed by "
+#, php-format
+msgid "Ocin Lite designed by %s"
 msgstr ""
 
 #: functions.php:65
@@ -91,11 +92,11 @@ msgstr ""
 msgid "Social Menu"
 msgstr ""
 
-#: header.php:95
+#: header.php:97
 msgid "My Account"
 msgstr ""
 
-#: header.php:98
+#: header.php:100
 msgid "Login"
 msgstr ""
 
@@ -126,12 +127,13 @@ msgstr ""
 msgid "Number of products displayed per page."
 msgstr ""
 
-#: inc/customizer.php:136
-msgid "View PRO version"
+#: inc/customizer.php:97
+msgid "PRO version"
 msgstr ""
 
-#: inc/customizer.php:137 inc/theme-functions/theme-info-page.php:38
-msgid "Documentation"
+#: inc/customizer.php:103
+#, php-format
+msgid "Check out the PRO version for more features. %s View PRO version %s"
 msgstr ""
 
 #: inc/extras.php:31
@@ -670,6 +672,10 @@ msgstr ""
 msgid "Check the content below to get started with our theme."
 msgstr ""
 
+#: inc/theme-functions/theme-info-page.php:38
+msgid "Documentation"
+msgstr ""
+
 #: inc/theme-functions/theme-info-page.php:39
 msgid "PRO Version"
 msgstr ""
@@ -680,23 +686,28 @@ msgstr ""
 
 #: inc/theme-functions/theme-info-page.php:68
 #, php-format
-msgid "You can find this documentation and more at our %sHelp Center%s."
+msgid ""
+"You can find the ocin-lite documentation and more at our %sHelp Center%s."
 msgstr ""
 
-#: inc/theme-functions/theme-info-page.php:127
+#: inc/theme-functions/theme-info-page.php:111
 msgid "Premium"
 msgstr ""
 
-#: inc/theme-functions/theme-info-page.php:129
+#: inc/theme-functions/theme-info-page.php:113
 msgid "Free"
 msgstr ""
 
-#: inc/theme-functions/woocommerce_support.php:240
+#: inc/theme-functions/woocommerce_support.php:197
 msgid "Portrait image?"
 msgstr ""
 
-#: inc/theme-functions/woocommerce_support.php:241
+#: inc/theme-functions/woocommerce_support.php:198
 msgid "Select if you want to display this product in portrait."
+msgstr ""
+
+#: inc/theme-functions/woocommerce_support.php:403
+msgid "Add to cart"
 msgstr ""
 
 #: inc/theme-functions/wp_bootstrap_navwalker.php:197
@@ -764,14 +775,6 @@ msgstr ""
 msgid "Edit %s"
 msgstr ""
 
-#: template-parts/pagination.php:11
-msgid "Previous page"
-msgstr ""
-
-#: template-parts/pagination.php:12
-msgid "Next page"
-msgstr ""
-
 #: woocommerce/cart/mini-cart.php:38
 msgid "View Cart"
 msgstr ""
@@ -788,7 +791,7 @@ msgstr ""
 msgid "No products in the cart."
 msgstr ""
 
-#: woocommerce/single-product/product-image.php:75
+#: woocommerce/single-product/product-image.php:101
 msgid "Placeholder"
 msgstr ""
 

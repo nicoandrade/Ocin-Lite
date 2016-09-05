@@ -20,7 +20,7 @@
             <div class="row">
 
                 <div class="col-md-5">
-                    <p><?php esc_html_e( 'Ocin Lite designed by ', 'ocin-lite' ); ?><a rel="nofollow" rel="designer" href="https://www.quemalabs.com/">Quema Labs</a>.
+                    <p><?php echo sprintf( esc_html__( 'Ocin Lite designed by %s', 'ocin-lite' ), '<a rel="nofollow" rel="designer" href="https://www.quemalabs.com/">Quema Labs</a>' ); ?>.
                     </p>
                 </div>
                 <div class="col-md-7">

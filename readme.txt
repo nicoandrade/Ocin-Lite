@@ -26,6 +26,14 @@ So, the first step would be to create a new menu under the “Appearance > Menus
 
 And, for the last part, be sure to select “Social” for the “Theme Location” before saving your menu.
 
+* WooCommerce images size from the demo
+If you want your images to look like the demo site, you should use this settings under WooCommerce > Settings > Products > Display > Product Images:
+Catalog Images
+348x218px
+Single Product Image
+869x543px
+Product Thumbnails
+197x123px
 
 * How to get the PRO version of Ocin Lite
 The PRO version is called "Ocin Lite" and includes tons of more features. You can buy it here:
@@ -52,6 +60,10 @@ Ocin Lite WordPress Theme bundles the following third-party resources:
 Underscores 
 (C) 2012-2015 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 Source: http://underscores.me/
+
+WooCommerce 
+An open source eCommerce plugin for WordPress created by WooThemes, [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+Source: https://woocommerce.com
 
 Font Awesome icon font, Created by Dave Gandy
 Font Awesome licensed under SIL OFL 1.1 http://scripts.sil.org/OFL
@@ -98,3 +110,4 @@ Source: http://tgmpluginactivation.com/
 
 Images in the Screenshot are from WooCommerce dummy data
 https://github.com/woothemes/woocommerce/blob/master/dummy-data/dummy-data.xml
+License: GPL-2.0 or later license

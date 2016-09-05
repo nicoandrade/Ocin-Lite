@@ -85,6 +85,9 @@ function ocin_lite_setup() {
 		'default-image' => '',
 	) ) );
 
+	// Add Logo support
+	add_theme_support( 'custom-logo' );
+
 	// Styles for TinyMCE
 	$font_url = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=Lato:300,400,700' );
     add_editor_style( array( 'css/editor-style.css', 'css/bootstrap.css', $font_url )  );
@@ -164,8 +167,15 @@ add_action( 'wp_enqueue_scripts', 'ocin_lite_scripts' );
  * Enqueue styles to the Admin Panel.
  */
 function ocin_lite_wp_admin_style() {
+
+	$current_screen = get_current_screen();
+	if ( 'appearance_page_ocin_lite_theme-info' === $current_screen->id || 'customize'  === $current_screen->id ) {
+		
         wp_register_style( 'ocin_lite_custom_wp_admin_css', get_template_directory_uri() . '/css/admin-styles.css', false, '1.0.0' );
         wp_enqueue_style( 'ocin_lite_custom_wp_admin_css' );
+
+	}
+
 }
 add_action( 'admin_enqueue_scripts', 'ocin_lite_wp_admin_style' );
 

@@ -35,7 +35,7 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php get_template_part( 'template-parts/pagination', 'archive' ); ?>
+			<?php the_posts_navigation(); ?>
 
 		<?php else : ?>
 

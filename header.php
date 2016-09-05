@@ -37,13 +37,15 @@
 
                 <div class="logo_container col-md-2 col-md-push-5">
                     <?php
-                    $logo = wp_get_attachment_image_src( absint( get_theme_mod( 'ocin_lite_logo' ) ), 'full' );
-                    $logo = $logo[0];
+                    $logo = '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="ql_logo">' . get_bloginfo( 'name' ) . '</a>';
+                    if ( has_custom_logo() ) {
+                        $logo = get_custom_logo();
+                    }
                     ?>
                     <?php if ( is_front_page() && is_home() ) : ?>
-                        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="ql_logo"><?php if ( !empty( $logo ) ) : echo '<img src="' . esc_url( $logo ) . '" />'; else: bloginfo( 'name' ); endif; ?></a></h1>
+                        <h1 class="site-title"><?php echo $logo; ?></h1>
                     <?php else : ?>
-                        <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="ql_logo"><?php if ( !empty( $logo ) ) : echo '<img src="' . esc_url( $logo ) . '" />'; else: bloginfo( 'name' ); endif; ?></a></p>
+                        <p class="site-title"><?php echo $logo; ?></p>
                     <?php endif; ?>
 
                     <button id="ql_nav_btn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ql_nav_collapse" aria-expanded="false">

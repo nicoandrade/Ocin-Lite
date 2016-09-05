@@ -41,7 +41,7 @@ function ocin_lite_customize_register( $wp_customize ) {
 	/*
     Colors
     ===================================================== */
-    	$wp_customize->add_setting( 'ocin_lite_probtn_colors', array( 'default' => '', 'sanitize_callback' => 'ocin_lite_sanitize_text', ) );
+    	$wp_customize->add_setting( 'ocin_lite_probtn_colors', array( 'default' => '', 'sanitize_callback' => 'sanitize_text_field', ) );
 		$wp_customize->add_control( new ocin_lite_Display_Text_Control( $wp_customize, 'ocin_lite_probtn_colors', array(
 			'section' => 'colors', // Required, core or custom.
 			'label' => sprintf( __( 'Check out the <a href="%s" target="_blank">PRO version</a> to change Text, Links and Featured colors.', 'ocin-lite' ), 'https://www.quemalabs.com/theme/ocin/' ),
@@ -90,7 +90,18 @@ function ocin_lite_customize_register( $wp_customize ) {
 	}//if plugin exists
 
 
-
+	/*
+	PRO Version
+	------------------------------ */
+	$wp_customize->add_section( 'ocin_lite_pro_section', array(
+		'title' => esc_attr__( 'PRO version', 'ocin-lite' ),
+		'priority' => 160,
+	) );
+	$wp_customize->add_setting( 'ocin_lite_probtn', array( 'default' => '', 'sanitize_callback' => 'coni_sanitize_text', ) );
+	$wp_customize->add_control( new ocin_lite_Display_Text_Control( $wp_customize, 'ocin_lite_probtn', array(
+		'section' => 'ocin_lite_pro_section', // Required, core or custom.
+		'label' => sprintf( __( 'Check out the PRO version for more features. %s View PRO version %s', 'ocin-lite' ), '<a target="_blank" class="button" href="https://www.quemalabs.com/theme/ocin/?utm_source=Ocin Lite%20Lite%20Theme&amp;utm_medium=Pro%20Button&amp;utm_campaign=Ocin Lite" style="width: 80%; margin: 10px auto; display: block; text-align: center;">', '</a>' ),
+	) ) );
    
 
 
@@ -130,12 +141,6 @@ add_action( 'customize_preview_init', 'ocin_lite_customize_preview_js' );
  * Load scripts on the Customizer not the Previewer (iframe)
  */
 function ocin_lite_customize_js() {
-
-	wp_enqueue_script( 'ocin_lite_customizer_top_buttons', get_template_directory_uri() . '/js/theme-customizer-top-buttons.js', array( 'jquery' ), true  );
-	wp_localize_script( 'ocin_lite_customizer_top_buttons', 'topbtns', array(
-			'pro' => esc_html__( 'View PRO version', 'ocin-lite' ),
-            'documentation' => esc_html__( 'Documentation', 'ocin-lite' )
-	) );
 	
 	wp_enqueue_script( 'ocin_lite_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-controls' ), '20151024', true );
 
@@ -172,38 +177,10 @@ function ocin_lite_sanitize_integer( $value ) {
 }
 
 /**
- * Sanitize return pro version text
- */
-function ocin_lite_pro_version( $input ) {
-    return $input;
-}
-
-/**
- * Sanitize Any
- */
-function ocin_lite_sanitize_any( $input ) {
-    return $input;
-}
-
-/**
- * Sanitize Text
- */
-function ocin_lite_sanitize_text( $str ) {
-	return sanitize_text_field( $str );
-} 
-
-/**
- * Sanitize Textarea
- */
-function ocin_lite_sanitize_textarea( $text ) {
-	return esc_textarea( $text );
-}
-
-/**
  * Sanitize URL
  */
 function ocin_lite_sanitize_url( $url ) {
-	return esc_url( $url );
+	return esc_url_raw( $url );
 }
 
 /**
@@ -254,43 +231,6 @@ function ocin_lite_sanitize_lat_long( $coords ) {
 
 
 
-/**
- * Create the "PRO version" buttons
- */
-if ( ! function_exists( 'ocin_lite_pro_btns' ) ){
-	function ocin_lite_pro_btns( $args ){
-
-		$wp_customize = $args['wp_customize'];
-		$title = $args['title'];
-		$label = $args['label'];
-		if ( isset( $args['priority'] ) || array_key_exists( 'priority', $args ) ) {
-			$priority = $args['priority'];
-		}else{
-			$priority = 120;
-		}
-		if ( isset( $args['panel'] ) || array_key_exists( 'panel', $args ) ) {
-			$panel = $args['panel'];
-		}else{
-			$panel = '';
-		}
-
-		$section_id = sanitize_title( $title );
-
-		$wp_customize->add_section( $section_id , array(
-			'title'       => $title,
-			'priority'    => $priority,
-			'panel' => $panel,
-		) );
-		$wp_customize->add_setting( $section_id, array(
-			'sanitize_callback' => 'ocin_lite_pro_version'
-		) );
-		$wp_customize->add_control( new ocin_lite_Pro_Version( $wp_customize, $section_id, array(
-	        'section' => $section_id,
-	        'label' => $label
-		   )
-		) );
-	}
-}//end if function_exists
 
 /**
  * Display Text Control
@@ -308,6 +248,9 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 			        'href' => array(),
 			        'title' => array(),
 			        'data-section' => array(),
+			        'style' => array(),
+			        'target' => array(),
+			        'class' => array(),
 			    ),
 			    'br' => array(),
 			    'em' => array(),

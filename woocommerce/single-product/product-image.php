@@ -4,22 +4,23 @@
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/single-product/product-image.php.
  *
- * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer).
- * will need to copy the new files to your theme to maintain compatibility. We try to do this.
- * as little as possible, but it does happen. When this occurs the version of the template file will.
- * be bumped and the readme will list any important changes.
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
  *
- * @see 	    http://docs.woothemes.com/document/template-structure/
+ * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     2.0.14
+ * @version     2.6.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit;
 }
 
-global $post, $woocommerce, $product;
+global $post, $product;
 
 ?>
 <div class="images">
@@ -50,7 +51,17 @@ global $post, $woocommerce, $product;
 						) );
 
 					//Add Feature Image
-					echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<a href="%s" itemprop="image" class="woocommerce-main-image zoom" title="%s" data-width="%s" data-height="%s">%s</a>', $image_link, $image_caption, $image_metadata['width'], $image_metadata['height'], $image ), $post->ID );
+					echo apply_filters( 
+						'woocommerce_single_product_image_html',
+						sprintf( '<a href="%s" itemprop="image" class="woocommerce-main-image zoom" title="%s" data-width="%s" data-height="%s">%s</a>',
+							esc_url( $image_link ),
+							esc_attr( $image_caption ),
+							$image_metadata['width'],
+							$image_metadata['height'],
+							$image
+						),
+						$post->ID
+					);
 
 					//Add the rest of the images
 					$attachment_ids = $product->get_gallery_attachment_ids();
@@ -65,14 +76,32 @@ global $post, $woocommerce, $product;
 								$image = wp_get_attachment_image( $attachment_id, apply_filters( 'single_product_large_thumbnail_size', $thumbnail_size ) );
 								$image_title = esc_attr( get_the_title( $attachment_id ) );
 
-								echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<a href="%s" title="%s" data-width="%s" data-height="%s">%s</a>', $image_link, $image_title, $image_metadata['width'], $image_metadata['height'], $image ), $attachment_id, $post->ID);
+								echo apply_filters( 
+									'woocommerce_single_product_image_html',
+									sprintf( '<a href="%s" title="%s" data-width="%s" data-height="%s">%s</a>',
+										esc_url( $image_link ),
+										esc_attr( $image_caption ),
+										$image_metadata['width'],
+										$image_metadata['height'],
+										$image
+									),
+									$attachment_id,
+									$post->ID
+								);
 
 							}
 					}
 
 				} else {
 
-					echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<img src="%s" alt="%s" />', wc_placeholder_img_src(), __( 'Placeholder', 'ocin-lite' ) ), $post->ID );
+					echo apply_filters( 
+						'woocommerce_single_product_image_html',
+						sprintf( '<img src="%s" alt="%s" />',
+							wc_placeholder_img_src(),
+							esc_html__( 'Placeholder', 'ocin-lite' )
+						),
+						$post->ID
+					);
 
 				}
 			?>

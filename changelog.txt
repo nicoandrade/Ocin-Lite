@@ -1,3 +1,20 @@
+* 1.0.8 - 05/09/2016
+====================
+- Added: Custom logo support
+
+
+* 1.0.7 - 05/09/2016
+====================
+- Updated: WooCommerce templates
+- Changed: PRO version button on customizer
+- Fixed: Translation ready issues
+
+
+* 1.0.6 - 13/07/2016
+====================
+- Changed: Theme Info page
+
+
 * 1.0.5 - 07/07/2016
 ====================
 - Removed: Redirect after theme installation

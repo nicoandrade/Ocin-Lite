@@ -24,20 +24,22 @@
 
                                 $ocin_lite_shop_categories = get_theme_mod( 'ocin_lite_shop_categories', '' );
 
-                                foreach ( $ocin_lite_shop_categories as $slug ) {
+                                if ( $ocin_lite_shop_categories ) {
+                                    foreach ( $ocin_lite_shop_categories as $slug ) {
 
-                                    $term = get_term_by( 'slug', $slug, 'product_cat' );
+                                        $term = get_term_by( 'slug', $slug, 'product_cat' );
 
-                                    // The $term is an object, so we don't need to specify the $taxonomy.
-                                    $term_link = get_term_link( $slug, 'product_cat' );
+                                        // The $term is an object, so we don't need to specify the $taxonomy.
+                                        $term_link = get_term_link( $slug, 'product_cat' );
 
-                                    // If there was an error, continue to the next term.
-                                    if ( is_wp_error( $term_link ) ) {
-                                        continue;
+                                        // If there was an error, continue to the next term.
+                                        if ( is_wp_error( $term_link ) ) {
+                                            continue;
+                                        }
+                                        $current_cat = is_product_category( $slug ) ? 'current' : '';
+                                        // We successfully got a link. Print it out.
+                                        echo '<li class="' . $current_cat . '"><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></li>';
                                     }
-                                    $current_cat = is_product_category( $slug ) ? 'current' : '';
-                                    // We successfully got a link. Print it out.
-                                    echo '<li class="' . $current_cat . '"><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></li>';
                                 }
 
                                 ?>

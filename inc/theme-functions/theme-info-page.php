@@ -65,25 +65,9 @@ function ocin_lite_getting_started_page() {
 
 			<div class="theme-docuementation">
 				<div class="help-msg-wrap">
-					<div class="help-msg"><?php echo sprintf( esc_html__( 'You can find this documentation and more at our %sHelp Center%s.', 'ocin-lite' ), '<a href="https://www.quemalabs.com/help-center/" target="_blank">', '</a>' ); ?></div>
+					<div class="help-msg"><?php echo sprintf( esc_html__( 'You can find the ocin-lite documentation and more at our %sHelp Center%s.', 'ocin-lite' ), '<a href="https://www.quemalabs.com/help-center/" target="_blank">', '</a>' ); ?></div>
 				</div>
-				<?php
-				$url = wp_nonce_url( 'themes.php?page=ocin_lite_theme-info', 'more-themes' );
-				if ( false === ( $creds = request_filesystem_credentials( $url, '', false, false, null ) ) ) {
-					return; // stop processing here
-				}
-				if ( ! WP_Filesystem( $creds ) ) {
-					request_filesystem_credentials( $url, '', true, false, null );
-					return;
-				}
-				global $wp_filesystem;
-				$content = $wp_filesystem->get_contents( 'https://www.quemalabs.com/article/' . QL_THEME_SLUG . '-documentation/' );
-				if ( $content ) {
-					$first_step = explode( '<div class="post_content">' , $content );
-					$second_step = explode("</div><!-- /post_content -->" , $first_step[1] );
-					echo $second_step[0];
-				}
-				?>
+				
 			</div><!-- .theme-docuementation -->
 			<?php
 	      	break;

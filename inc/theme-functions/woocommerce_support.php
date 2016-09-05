@@ -137,49 +137,6 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 
 
 /**
- * Hook in on activation
- */
-
-/**
- * Define image sizes
- */
-if (!function_exists('ocin_lite_woocommerce_image_dimensions')) {
-	function ocin_lite_woocommerce_image_dimensions() {
-		global $pagenow;
-	 
-		if ( ! isset( $_GET['activated'] ) || $pagenow != 'themes.php' ) {
-			return;
-		}
-
-	  	$catalog = array(
-			'width' 	=> '348',	// px
-			'height'	=> '218',	// px
-			'crop'		=> 1 		// true
-		);
-	 
-		$single = array(
-			'width' 	=> '869',	// px
-			'height'	=> '543',	// px
-			'crop'		=> 1 		// true
-		);
-	 
-		$thumbnail = array(
-			'width' 	=> '197',	// px
-			'height'	=> '123',	// px
-			'crop'		=> 1 		// true
-		);
-
-		// Image sizes
-		update_option( 'shop_catalog_image_size', $catalog ); 		// Product category thumbs
-		update_option( 'shop_single_image_size', $single ); 		// Single product image
-		update_option( 'shop_thumbnail_image_size', $thumbnail ); 	// Image gallery thumbs
-	}
-}
-add_action( 'after_switch_theme', 'ocin_lite_woocommerce_image_dimensions', 1 );
-
-
-
-/**
  * Define number of porducts to show per page
  */
 $product_amout = get_theme_mod( 'ocin_lite_shop_products_amount', '12' );
@@ -443,7 +400,7 @@ function ocin_lite_single_product_wrap_end_summary(){
 			<div class="quantity">
 				<input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
 			</div>
-			<button class="single_add_to_cart_button button alt" type="submit">Add to cart</button>
+			<button class="single_add_to_cart_button button alt" type="submit"><?php esc_html_e( 'Add to cart', 'ocin-lite' );?></button>
 		</div>
 
         <div class="social-share">
