@@ -1,3 +1,17 @@
+* 1.0.10 - 05/01/2017
+====================
+- Added: Support for External/Affiliate products
+- Updated: FontAwesome
+- Improved: 404 page
+- Improved: HTML table styles
+
+
+* 1.0.9 - 09/09/2016
+====================
+- Fixed: Error when Kirki plugin is not active
+- Removed: Tracking on premium link
+
+
 * 1.0.8 - 05/09/2016
 ====================
 - Added: Custom logo support

@@ -397,10 +397,16 @@ function ocin_lite_single_product_wrap_end_summary(){
 	</div><!-- /entry -->
 	<div class="summary-bottom">
         <div class="woocommerce-variation-add-to-cart variations_button">
+        <?php 
+        global $product;
+        if ( 'variable' == $product->product_type ) { ?>
 			<div class="quantity">
 				<input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
 			</div>
-			<button class="single_add_to_cart_button button alt" type="submit"><?php esc_html_e( 'Add to cart', 'ocin-lite' );?></button>
+			<button class="single_add_to_cart_button button alt" type="submit"><?php esc_html_e( 'Add to cart', 'ocin-lite' ); ?></button>
+			<?php }else{ ?>
+			<?php woocommerce_template_single_add_to_cart(); ?>
+			<?php } ?>
 		</div>
 
         <div class="social-share">

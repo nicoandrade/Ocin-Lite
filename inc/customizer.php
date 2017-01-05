@@ -52,7 +52,7 @@ function ocin_lite_customize_register( $wp_customize ) {
 	/*
 	Shop Categories selection
 	------------------------------ */
-	if ( class_exists( 'WooCommerce' ) || class_exists( 'Kirki' ) ){
+	if ( class_exists( 'WooCommerce' ) && class_exists( 'Kirki' ) ){
 
 		$wp_customize->add_section( 'ocin_lite_shop_options', array(
 			'title' => esc_attr__( 'Shop Options', 'ocin-lite' ),
@@ -100,7 +100,7 @@ function ocin_lite_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'ocin_lite_probtn', array( 'default' => '', 'sanitize_callback' => 'coni_sanitize_text', ) );
 	$wp_customize->add_control( new ocin_lite_Display_Text_Control( $wp_customize, 'ocin_lite_probtn', array(
 		'section' => 'ocin_lite_pro_section', // Required, core or custom.
-		'label' => sprintf( __( 'Check out the PRO version for more features. %s View PRO version %s', 'ocin-lite' ), '<a target="_blank" class="button" href="https://www.quemalabs.com/theme/ocin/?utm_source=Ocin Lite%20Lite%20Theme&amp;utm_medium=Pro%20Button&amp;utm_campaign=Ocin Lite" style="width: 80%; margin: 10px auto; display: block; text-align: center;">', '</a>' ),
+		'label' => sprintf( __( 'Check out the PRO version for more features. %s View PRO version %s', 'ocin-lite' ), '<a target="_blank" class="button" href="https://www.quemalabs.com/theme/ocin/" style="width: 80%; margin: 10px auto; display: block; text-align: center;">', '</a>' ),
 	) ) );
    
 

@@ -406,7 +406,7 @@
 	display: none;
 }
 
-.woocommerce .products .product .add_to_cart_button{
+.woocommerce .products .product .add_to_cart_button, .woocommerce .products .product .product_type_external{
 	border: none;
 	width: 45px;
 	height: 45px;
@@ -419,28 +419,31 @@
 	.translate(0px; 20px);
 	padding: 0;
 }
-.woocommerce .products .product:hover .add_to_cart_wrap{
+.woocommerce .products .product:hover .add_to_cart_wrap, .woocommerce .products .product:hover .product_type_external{
 	opacity: 1;
 }
-.woocommerce .products .product:hover .add_to_cart_button{
+.woocommerce .products .product:hover .add_to_cart_button, .woocommerce .products .product:hover .product_type_external{
 	.translate(0; 0);
 }
 
-.woocommerce .products .product .add_to_cart_button:hover{
+.woocommerce .products .product .add_to_cart_button:hover, .woocommerce .products .product:hover .product_type_external:hover{
 	background-color: @heroColor2;
 	color: #fff;
 }
-.woocommerce .products .product .add_to_cart_button:active{
+.woocommerce .products .product .add_to_cart_button:active, .woocommerce .products .product:hover .product_type_external:active{
 	outline: none;
 }
-.woocommerce .products .product .add_to_cart_button i{
+.woocommerce .products .product .add_to_cart_button i, .woocommerce .products .product:hover .product_type_external i{
 	.font-size(20);
 	color: @gray-dark;
 }
-.woocommerce .products .product .add_to_cart_button:hover i{
+.woocommerce .products .product:hover .product_type_external i{
+	.font-size(16);
+}
+.woocommerce .products .product .add_to_cart_button:hover i, .woocommerce .products .product:hover .product_type_external:hover i{
 	color: #fff;
 }
-.woocommerce .products .product .add_to_cart_button:active i{
+.woocommerce .products .product .add_to_cart_button:active i, .woocommerce .products .product:hover .product_type_external:active i{
 	position: relative;
 	top: 1px;
 	left: -1px;
@@ -738,6 +741,9 @@
 	.ql_background;
 	padding: 1.25rem;
 	margin-bottom: 1.25rem;
+}
+.woocommerce .product .summary .summary-bottom .woocommerce-variation-add-to-cart .cart{
+	margin-bottom: 0!important;
 }
 
 //Product Title

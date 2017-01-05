@@ -176,9 +176,13 @@ a img.aligncenter {
 }
 
 
+#main table{
+    .table;
+}
+
 
 /*------------------------------------------------------------
- Defaul Widgets
+ Default Widgets
 -------------------------------------------------------------- */
 
 /* Archive List Widget
@@ -492,5 +496,60 @@ a img.aligncenter {
     display: block;
     padding: 10px 0!important;
 
+}
+
+
+/*------------------------------------------------------------
+404
+-------------------------------------------------------------- */
+.error-404{
+    .page-header{
+        text-align: center;
+            
+            .page-title{
+                padding-bottom: 1.21951219512195em;
+            }
+            i{
+                .font-size(140);
+                display: block;
+                margin-bottom: 1.875rem;
+                color: #000;
+                opacity: 0.2;
+            }
+    }
+    .page-content{
+        text-align: center;
+
+            .search-form{
+                width: 50%;
+                margin: 0 auto;
+            }
+    }
+}
+.widgets-404{
+    margin-top: 50px;
+
+        .col-md-3{
+            margin-bottom: 30px;
+        }
+        .widget{
+            text-align: left;
+
+                ul{
+                    list-style: none;
+                    padding-left: 0;
+
+                        li{
+                            margin-bottom: 10px;
+
+                                a{
+                                    color: inherit;
+                                }
+                        }
+                }
+                .widgettitle, .widget-title{
+                    .font-size(24);
+                }
+        }
 }
 

@@ -24,6 +24,9 @@ $button_icon = "ql-cart-plus";
 if ($product->product_type == "variable") {
 	$button_icon = "ql-arrow-right";
 }
+if ($product->product_type == "external") {
+	$button_icon = "fa fa-link";
+}
 echo apply_filters( 'woocommerce_loop_add_to_cart_link',
 	sprintf( '<div class="add_to_cart_wrap"><button rel="nofollow" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s" class="%s"><i class="%s"></i></button></div>',
 		esc_url( $product->add_to_cart_url() ),
