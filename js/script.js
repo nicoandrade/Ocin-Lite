@@ -56,6 +56,16 @@ jQuery(document).ready(function($) {
 			  	createCarousel();
 			});
 
+			/*
+			WooCommerce Cart Widget Button
+			=========================================================
+			*/
+			$('body').on('click', '.ql_cart-btn', function(event) {
+				event.preventDefault();
+				/* Act on the event */
+				window.location.href = $(this).attr('href');
+			});
+
 
 			
 

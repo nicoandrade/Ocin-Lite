@@ -76,7 +76,7 @@
 
                 
                 <?php 
-                if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) { 
+                if ( class_exists( 'woocommerce' ) ) { 
                 ?>
                     <div class="col-md-5 col-sm-6">
                         
