@@ -7,7 +7,7 @@
 		"uuidString": "5AF57ADA-47EB-4BD4-8C05-656FCE77BD6A"
 		}
 	],
-"creatorBuild": "25704",
+"creatorBuild": "25813",
 "files": {
 	"\/.gitignore": {
 		"ft": 8192,
@@ -72,11 +72,12 @@
 	"\/css\/default-skin\/default-skin.png": {
 		"ft": 32768,
 		"iS": 547,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/css\/default-skin\/default-skin.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/css\/default-skin\/default-skin.svg": {
@@ -158,21 +159,23 @@
 	"\/images\/header_bck.png": {
 		"ft": 32768,
 		"iS": 268434,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/header_bck.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/images\/quemalabs.png": {
 		"ft": 32768,
 		"iS": 12774,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/quemalabs.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/inc\/customizer.php": {
@@ -1952,11 +1955,12 @@
 	"\/screenshot.png": {
 		"ft": 32768,
 		"iS": 308194,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/screenshot.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/search.php": {
@@ -3358,6 +3362,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-prototype-builtins": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-redeclare": {
 			"active": 1,
 			"optionString": "{'builtinGlobals': false}"
@@ -4182,14 +4190,6 @@
 		"orderOutput": 0,
 		"outputStyle": 1
 		},
-	"languageDefaultsJSX": {
-		"autoOutputAction": 0,
-		"autoOutputPathFilenamePattern": "*.js",
-		"autoOutputPathRelativePath": "",
-		"autoOutputPathReplace1": "jsx",
-		"autoOutputPathReplace2": "js",
-		"autoOutputPathStyle": 0
-		},
 	"languageDefaultsKIT": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.html",
@@ -4252,7 +4252,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
-		"enableLossy": 1,
+		"optimizerType": 1,
 		"quality": 100
 		},
 	"languageDefaultsPUG": {

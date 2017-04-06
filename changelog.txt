@@ -1,3 +1,8 @@
+* 1.0.12 - 06/04/2017
+====================
+- Added: WooCommerce 3.0 support
+
+
 * 1.0.11 - 28/03/2017
 ====================
 - Improved: WooCommerce detection

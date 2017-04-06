@@ -162,7 +162,7 @@ if ( !function_exists( 'ocin_lite_template_loop_product_thumbnail' ) ) {
 		
 		//Get one more image
 		global $product;
-		$attachment_ids = $product->get_gallery_attachment_ids();
+		$attachment_ids = $product->get_gallery_image_ids();
 		if ( $attachment_ids > 0 ) {
 			$default_attr = array(
 				'class'	=> "product_second_img"
@@ -399,7 +399,7 @@ function ocin_lite_single_product_wrap_end_summary(){
         <div class="woocommerce-variation-add-to-cart variations_button">
         <?php 
         global $product;
-        if ( 'variable' == $product->product_type ) { ?>
+        if ( $product->is_type( 'variable' ) ) { ?>
 			<div class="quantity">
 				<input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
 			</div>

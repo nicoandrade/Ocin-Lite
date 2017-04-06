@@ -10,10 +10,10 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see 	    https://docs.woocommerce.com/document/template-structure/
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
- * @version     2.6.3
+ * @see     https://docs.woocommerce.com/document/template-structure/
+ * @author  WooThemes
+ * @package WooCommerce/Templates
+ * @version 3.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,13 +21,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $post, $product;
-
+$columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
+$placeholder       = has_post_thumbnail() ? 'with-images' : 'without-images';
+$wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_classes', array(
+	'woocommerce-product-gallery',
+	'woocommerce-product-gallery--' . $placeholder,
+	'woocommerce-product-gallery--columns-' . absint( $columns ),
+	'images',
+) );
 ?>
 <div class="images">
 	
 	<div class="ql_main_image_column_wrap">
-        <div class="ql_main_image_column">
-            <div class="ql_main_images owl-carousel">
+        <div class="ql_main_image_column <?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>">
+            <div class="ql_main_images owl-carousel woocommerce-product-gallery__wrapper">
 			<?php
 				if ( has_post_thumbnail() ) {
 
@@ -38,7 +45,7 @@ global $post, $product;
 
 					//If portrait we use a different thumbnail size if not we use default one
 					if ( ! empty( $portrait_image ) && 'yes' == $portrait_image ) {
-						$thumbnail_size = 'ocin_lite_shop_single_portrait';
+						$thumbnail_size = 'ocin_shop_single_portrait';
 					}
 
 					$image_title 	= esc_attr( get_the_title( get_post_thumbnail_id() ) );
@@ -64,7 +71,7 @@ global $post, $product;
 					);
 
 					//Add the rest of the images
-					$attachment_ids = $product->get_gallery_attachment_ids();
+					$attachment_ids = $product->get_gallery_image_ids();
 
 					if ( $attachment_ids ) {
 							foreach ( $attachment_ids as $attachment_id ) {
@@ -77,7 +84,7 @@ global $post, $product;
 								$image_title = esc_attr( get_the_title( $attachment_id ) );
 
 								echo apply_filters( 
-									'woocommerce_single_product_image_html',
+									'woocommerce_single_product_image_thumbnail_html',
 									sprintf( '<a href="%s" title="%s" data-width="%s" data-height="%s">%s</a>',
 										esc_url( $image_link ),
 										esc_attr( $image_caption ),
@@ -95,9 +102,9 @@ global $post, $product;
 				} else {
 
 					echo apply_filters( 
-						'woocommerce_single_product_image_html',
+						'woocommerce_single_product_image_thumbnail_html',
 						sprintf( '<img src="%s" alt="%s" />',
-							wc_placeholder_img_src(),
+							esc_url( wc_placeholder_img_src() ),
 							esc_html__( 'Placeholder', 'ocin-lite' )
 						),
 						$post->ID
