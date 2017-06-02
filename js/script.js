@@ -55,6 +55,12 @@ jQuery(document).ready(function($) {
 				$owl_cart.trigger('destroy.owl.carousel');
 			  	createCarousel();
 			});
+			//Updates Carousel on the first load of the page
+			$(document.body).bind("wc_fragments_refreshed",function(){
+				$("#ql_woo_cart .products").trigger('destroy.owl.carousel');
+			  	createCarousel();
+			});
+
 
 			/*
 			WooCommerce Cart Widget Button

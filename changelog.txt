@@ -1,3 +1,8 @@
+* 1.0.14 - 02/06/2017
+====================
+- Fixed: Issue creating mini cart on page load
+
+
 * 1.0.13 - 02/06/2017
 ====================
 - Added: WooCommerce 3.0.7 support
