@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 3.0.0
+ * @version 3.0.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -60,7 +60,7 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 					//Add Feature Image
 					echo apply_filters( 
 						'woocommerce_single_product_image_html',
-						sprintf( '<a href="%s" itemprop="image" class="woocommerce-main-image zoom" title="%s" data-width="%s" data-height="%s">%s</a>',
+						sprintf( '<a href="%s" itemprop="image" class="woocommerce-main-image woocommerce-product-gallery__image zoom" title="%s" data-width="%s" data-height="%s">%s</a>',
 							esc_url( $image_link ),
 							esc_attr( $image_caption ),
 							$image_metadata['width'],
