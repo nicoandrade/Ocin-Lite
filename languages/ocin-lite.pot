@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Ocin Lite\n"
-"POT-Creation-Date: 2017-01-05 16:22-0300\n"
-"PO-Revision-Date: 2017-01-05 16:22-0300\n"
+"POT-Creation-Date: 2017-06-30 14:31-0300\n"
+"PO-Revision-Date: 2017-06-30 14:31-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -111,27 +111,27 @@ msgstr ""
 msgid "Shop Options"
 msgstr ""
 
-#: inc/customizer.php:73
+#: inc/customizer.php:74
 msgid "Shop Categories"
 msgstr ""
 
-#: inc/customizer.php:76
+#: inc/customizer.php:75
 msgid "Select categories for the shop categories menu."
 msgstr ""
 
-#: inc/customizer.php:83
+#: inc/customizer.php:85
 msgid "Number of products"
 msgstr ""
 
-#: inc/customizer.php:84
+#: inc/customizer.php:86
 msgid "Number of products displayed per page."
 msgstr ""
 
-#: inc/customizer.php:97
+#: inc/customizer.php:99
 msgid "PRO version"
 msgstr ""
 
-#: inc/customizer.php:103
+#: inc/customizer.php:105
 #, php-format
 msgid "Check out the PRO version for more features. %s View PRO version %s"
 msgstr ""
@@ -791,7 +791,7 @@ msgstr ""
 msgid "No products in the cart."
 msgstr ""
 
-#: woocommerce/single-product/product-image.php:101
+#: woocommerce/single-product/product-image.php:108
 msgid "Placeholder"
 msgstr ""
 

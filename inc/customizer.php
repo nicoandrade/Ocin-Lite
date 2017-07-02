@@ -59,22 +59,24 @@ function ocin_lite_customize_register( $wp_customize ) {
 			'priority' => 120,
 		) );
 
-		$wp_customize->add_setting( 'ocin_lite_shop_categories', array( 'default' => array( '' ), 'sanitize_callback' => 'ocin_lite_sanitize_multicheck', 'type' => 'theme_mod' ) );
 		$all_categories = get_categories( array(
 		         'taxonomy'     => 'product_cat',
 		) );
 		$woo_categories = array();
 		if ( $all_categories ) {
 			foreach ( $all_categories as $cat ) {
-				$woo_categories[$cat->slug] = $cat->name;
+				$woo_categories[ esc_attr( $cat->slug ) ] = $cat->name;
 			}
 		}
-	    $wp_customize->add_control( new Kirki_Controls_MultiCheck_Control( $wp_customize, 'ocin_lite_shop_categories', array(
-	        'label'   => esc_attr__( 'Shop Categories', 'ocin-lite' ),
-	        'section' => 'ocin_lite_shop_options',
-	        'choices' => $woo_categories,
-	        'description' => esc_attr__( 'Select categories for the shop categories menu.', 'ocin-lite' ),
-	    ) ) );
+	    Kirki::add_field( 'ocin_lite_shop_categories', array(
+		    'type'        => 'multicheck',
+		    'settings'    => 'ocin_lite_shop_categories',
+		    'label'   => esc_attr__( 'Shop Categories', 'ocin-lite' ),
+		    'description' => esc_attr__( 'Select categories for the shop categories menu.', 'ocin-lite' ),
+		    'section'     => 'ocin_lite_shop_options',
+		    'choices' => $woo_categories,
+		    'default'     => 12,
+		) );
 
 
 	    Kirki::add_field( 'ocin_lite_shop_products_amount', array(

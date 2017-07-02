@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 3.0.2
+ * @version 3.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -45,7 +45,7 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 
 					//If portrait we use a different thumbnail size if not we use default one
 					if ( ! empty( $portrait_image ) && 'yes' == $portrait_image ) {
-						$thumbnail_size = 'ocin_shop_single_portrait';
+						$thumbnail_size = 'ocin_lite_shop_single_portrait';
 					}
 
 					$image_title 	= esc_attr( get_the_title( get_post_thumbnail_id() ) );
@@ -59,7 +59,7 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 
 					//Add Feature Image
 					echo apply_filters( 
-						'woocommerce_single_product_image_html',
+						'woocommerce_single_product_image_thumbnail_html',
 						sprintf( '<a href="%s" itemprop="image" class="woocommerce-main-image woocommerce-product-gallery__image zoom" title="%s" data-width="%s" data-height="%s">%s</a>',
 							esc_url( $image_link ),
 							esc_attr( $image_caption ),
@@ -71,7 +71,11 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 					);
 
 					//Add the rest of the images
-					$attachment_ids = $product->get_gallery_image_ids();
+					if( method_exists( $product,'get_gallery_image_ids' ) ){
+						$attachment_ids = $product->get_gallery_image_ids();
+					}else{
+						$attachment_ids = $product->get_gallery_attachment_ids();
+					}
 
 					if ( $attachment_ids ) {
 							foreach ( $attachment_ids as $attachment_id ) {

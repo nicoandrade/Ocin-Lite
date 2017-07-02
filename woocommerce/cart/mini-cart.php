@@ -6,17 +6,17 @@
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/cart/mini-cart.php.
  *
- * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer).
- * will need to copy the new files to your theme to maintain compatibility. We try to do this.
- * as little as possible, but it does happen. When this occurs the version of the template file will.
- * be bumped and the readme will list any important changes.
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
  *
- * @see     http://docs.woothemes.com/document/template-structure/
+ * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 2.5.0
+ * @version 3.1.0
  */
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
@@ -34,10 +34,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
 
-    <p class="buttons">
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="button wc-forward"><?php _e( 'View Cart', 'ocin-lite' ); ?></a>
-		<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="button checkout wc-forward"><?php _e( 'Checkout', 'ocin-lite' ); ?></a>
-	</p>
+    <p class="woocommerce-mini-cart__buttons buttons"><?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?></p>
+
 </div>
 <?php endif; ?>
 
@@ -48,6 +46,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php if ( ! WC()->cart->is_empty() ) : ?>
 
 		<?php
+
+			do_action( 'woocommerce_before_mini_cart_contents' );
+
 			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 				$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 				$product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
@@ -76,7 +77,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</a>
 						<?php endif; ?>
 						<div class="product_text">
-                            <h3><a href="<?php echo esc_url( $_product->get_permalink( $cart_item ) ); ?>"><?php echo $product_name; ?></a></h3>
+                            <h3><a href="<?php echo esc_url( $_product->get_permalink( $cart_item ) ); ?>"><?php echo esc_html( $product_name ); ?></a></h3>
 
                             <?php echo WC()->cart->get_item_data( $cart_item ); ?>
 
@@ -91,9 +92,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php else : ?>
 
-		<li class="empty"><?php _e( 'No products in the cart.', 'ocin-lite' ); ?></li>
+		<li class="empty"><?php esc_html_e( 'No products in the cart.', 'ocin-lite' ); ?></li>
 
 	<?php endif; ?>
+
+	<?php do_action( 'woocommerce_mini_cart_contents' ); ?>
 
 </ul><!-- end product list -->
 
