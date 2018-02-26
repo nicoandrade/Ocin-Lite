@@ -45,6 +45,22 @@ add_filter( 'woocommerce_show_page_title' , 'woo_hide_page_title' );
 
 
 /**
+ * Accepts Portrait image size
+*/
+function ocin_lite_support_portrait_image_size() {
+	//Get if this product is portrait
+	$portrait_image = get_post_meta( get_the_ID(), '_portrait_image', true );
+	$thumbnail_size = 'woocommerce_single';
+	//If portrait we use a different thumbnail size if not we use default one
+	if ( ! empty( $portrait_image ) && 'yes' == $portrait_image ) {
+		$thumbnail_size = 'ocin_lite_shop_single_portrait';
+	}
+	return $thumbnail_size;
+}
+add_filter( 'woocommerce_gallery_image_size' , 'ocin_lite_support_portrait_image_size' );
+
+
+/**
  * Remove Catalog Ordering on Shop Page
  */
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );

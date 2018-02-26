@@ -589,7 +589,7 @@
 .woocommerce #main #content div.product div.thumbnails{
 	padding-top: 0;
 }
-.woocommerce #main #content div.product div.thumbnails a{
+.woocommerce #main #content div.product div.thumbnails .woocommerce-product-gallery__image{
 	width: 15%;
 	float: none;
 	display: inline-block;
@@ -600,11 +600,19 @@
 	margin-right: 10px;
 	.translate( 0; 10px );
 	.transition( 150ms all ease);
-}
-.woocommerce #main #content div.product div.thumbnails a.current, .woocommerce #main #content div.product div.thumbnails a:hover{
-	opacity: 1;
-	.ql_background;
-	.translate( 0; 0 );
+
+		a{
+			width: 100%;
+			display: block;
+			float: none;
+		}
+
+		&.current,
+		&:hover{
+			opacity: 1;
+			.ql_background;
+			.translate( 0; 0 );
+		}
 }
 
 //Prev and Next buttons

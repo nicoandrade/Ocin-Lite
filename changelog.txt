@@ -1,3 +1,9 @@
+* 1.0.18 - 26/02/2018
+====================
+- Added: Support for WooCommerce 3.3
+- Updated: PhotoSwipe
+
+
 * 1.0.17 - 15/09/2017
 ====================
 - Improved: Support for Jetpack's Social Share buttons

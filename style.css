@@ -4,7 +4,7 @@ Theme URI: https://www.quemalabs.com/theme/ocin-lite/
 Author: Quema Labs
 Author URI: https://www.quemalabs.com/
 Description: Ocin Lite is a beautiful WooCommerce theme perfect for modern and clean online shops. With a responsive design will make your online store  look great on all devices.
-Version: 1.0.17
+Version: 1.0.18
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Text Domain: ocin-lite
@@ -2759,7 +2759,7 @@ Payments Options
 .woocommerce #main #content div.product div.thumbnails {
   padding-top: 0;
 }
-.woocommerce #main #content div.product div.thumbnails a {
+.woocommerce #main #content div.product div.thumbnails .woocommerce-product-gallery__image {
   width: 15%;
   float: none;
   display: inline-block;
@@ -2776,8 +2776,13 @@ Payments Options
   -o-transition: 150ms all ease;
   transition: 150ms all ease;
 }
-.woocommerce #main #content div.product div.thumbnails a.current,
-.woocommerce #main #content div.product div.thumbnails a:hover {
+.woocommerce #main #content div.product div.thumbnails .woocommerce-product-gallery__image a {
+  width: 100%;
+  display: block;
+  float: none;
+}
+.woocommerce #main #content div.product div.thumbnails .woocommerce-product-gallery__image.current,
+.woocommerce #main #content div.product div.thumbnails .woocommerce-product-gallery__image:hover {
   opacity: 1;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);

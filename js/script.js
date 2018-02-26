@@ -121,7 +121,7 @@ jQuery(document).ready(function($) {
 			    margin:10
 			});
 
-			$ql_woo_thumbnails = $(".ql_thumbnail_column a");
+			$ql_woo_thumbnails = $(".ql_thumbnail_column .woocommerce-product-gallery__image");
 			//Change thumbnails state on slider change
 			ql_owl_woo.on('changed.owl.carousel', function(event) {
 				var item = event.item.index;

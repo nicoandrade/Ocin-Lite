@@ -1,6 +1,6 @@
-/*! PhotoSwipe - v4.1.0 - 2015-09-24
+/*! PhotoSwipe - v4.1.2 - 2017-04-05
 * http://photoswipe.com
-* Copyright (c) 2015 Dmitry Semenov; */
+* Copyright (c) 2017 Dmitry Semenov; */
 (function (root, factory) { 
 	if (typeof define === 'function' && define.amd) {
 		define(factory);
@@ -397,6 +397,8 @@ var _isOpen,
 	_features,
 	_windowVisibleSize = {},
 	_renderMaxResolution = false,
+	_orientationChangeTimeout,
+
 
 	// Registers PhotoSWipe module (History, Controller ...)
 	_registerModule = function(name, module) {
@@ -544,13 +546,13 @@ var _isOpen,
 			framework.bind(document, 'mousemove', _onFirstMouseMove);
 		}
 
-		framework.bind(window, 'resize scroll', self);
+		framework.bind(window, 'resize scroll orientationchange', self);
 
 		_shout('bindEvents');
 	},
 
 	_unbindEvents = function() {
-		framework.unbind(window, 'resize', self);
+		framework.unbind(window, 'resize scroll orientationchange', self);
 		framework.unbind(window, 'scroll', _globalEventHandlers.scroll);
 		framework.unbind(document, 'keydown', self);
 		framework.unbind(document, 'mousemove', _onFirstMouseMove);
@@ -562,6 +564,8 @@ var _isOpen,
 		if(_isDragging) {
 			framework.unbind(window, _upMoveEvents, self);
 		}
+
+		clearTimeout(_orientationChangeTimeout);
 
 		_shout('unbindEvents');
 	},
@@ -841,6 +845,18 @@ var publicMethods = {
 		// Setup global events
 		_globalEventHandlers = {
 			resize: self.updateSize,
+
+			// Fixes: iOS 10.3 resize event
+			// does not update scrollWrap.clientWidth instantly after resize
+			// https://github.com/dimsemenov/PhotoSwipe/issues/1315
+			orientationchange: function() {
+				clearTimeout(_orientationChangeTimeout);
+				_orientationChangeTimeout = setTimeout(function() {
+					if(_viewportSize.x !== self.scrollWrap.clientWidth) {
+						self.updateSize();
+					}
+				}, 500);
+			},
 			scroll: _updatePageScrollOffset,
 			keydown: _onKeyDown,
 			click: _onGlobalClick
@@ -1409,12 +1425,12 @@ var _gestureStartTime,
 	
 	// find the closest parent DOM element
 	_closestElement = function(el, fn) {
-	  	if(!el) {
+	  	if(!el || el === document) {
 	  		return false;
 	  	}
 
 	  	// don't search elements above pswp__scroll-wrap
-	  	if(el.className && el.className.indexOf('pswp__scroll-wrap') > -1 ) {
+	  	if(el.getAttribute('class') && el.getAttribute('class').indexOf('pswp__scroll-wrap') > -1 ) {
 	  		return false;
 	  	}
 
@@ -3720,10 +3736,9 @@ _registerModule('History', {
 
 
 
-
-/*! PhotoSwipe Default UI - 4.1.0 - 2015-09-04
+/*! PhotoSwipe Default UI - 4.1.2 - 2017-04-05
 * http://photoswipe.com
-* Copyright (c) 2015 Dmitry Semenov; */
+* Copyright (c) 2017 Dmitry Semenov; */
 /**
 *
 * UI on top of main sliding area (caption, arrows, close button, etc.).
@@ -3816,7 +3831,8 @@ var PhotoSwipeUI_Default =
 				return pswp.currItem.title || '';
 			},
 				
-			indexIndicatorSep: ' / '
+			indexIndicatorSep: ' / ',
+			fitControlsWidth: 1200
 
 		},
 		_blockControlsTap,
@@ -3840,7 +3856,7 @@ var PhotoSwipeUI_Default =
 
 			var target = e.target || e.srcElement,
 				uiElement,
-				clickedClass = target.className,
+				clickedClass = target.getAttribute('class') || '',
 				found;
 
 			for(var i = 0; i < _uiElements.length; i++) {
@@ -3872,7 +3888,7 @@ var PhotoSwipeUI_Default =
 
 		},
 		_fitControlsInViewport = function() {
-			return !pswp.likelyTouchDevice || _options.mouseUsed || screen.width > 1200;
+			return !pswp.likelyTouchDevice || _options.mouseUsed || screen.width > _options.fitControlsWidth;
 		},
 		_togglePswpClass = function(el, cName, add) {
 			framework[ (add ? 'add' : 'remove') + 'Class' ](el, 'pswp__' + cName);
@@ -4297,8 +4313,8 @@ var PhotoSwipeUI_Default =
 			var t = e.target || e.srcElement;
 			if(
 				t && 
-				t.className && e.type.indexOf('mouse') > -1 && 
-				( t.className.indexOf('__caption') > 0 || (/(SMALL|STRONG|EM)/i).test(t.tagName) ) 
+				t.getAttribute('class') && e.type.indexOf('mouse') > -1 && 
+				( t.getAttribute('class').indexOf('__caption') > 0 || (/(SMALL|STRONG|EM)/i).test(t.tagName) ) 
 			) {
 				preventObj.prevent = false;
 			}
@@ -4587,6 +4603,7 @@ return PhotoSwipeUI_Default;
 
 
 
+
 /*
 Custom PhotoSwipe Initialization
 Quema Labs
@@ -4599,11 +4616,11 @@ var initPhotoSwipe = function(gallerySelector, imageSelector, owlCarousel) {
     (function( $ ) {
     	//Create the items array
 		$(gallerySelector).find(imageSelector).each(function(index, el) {
-			var $image_anchor = $(el).parent('a');
+			var $image_anchor = $(el);
 			item = {
-	            src: $image_anchor.attr('href'),
-	            w: parseInt($image_anchor.attr('data-width'), 10),
-	            h: parseInt($image_anchor.attr('data-height'), 10)
+	            src: $image_anchor.attr('data-src'),
+	            w: parseInt($image_anchor.attr('data-large_image_width'), 10),
+	            h: parseInt($image_anchor.attr('data-large_image_height'), 10)
 	        };
 	        if ( $(el).parents('.item').find('.ql_caption').length > 0 ) {
 	        	item.title = $(el).parents('.item').find('.ql_caption').html();

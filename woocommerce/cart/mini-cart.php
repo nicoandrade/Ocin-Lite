@@ -15,15 +15,13 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 3.1.0
+ * @version 3.3.0
  */
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit;
 }
 
-?>
-
-<?php do_action( 'woocommerce_before_mini_cart' ); ?>
+do_action( 'woocommerce_before_mini_cart' ); ?>
 
 <?php if ( ! WC()->cart->is_empty() ) : ?>
 <div class="widget_shopping_cart_calc">
@@ -58,6 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$product_name  = apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key );
 					$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 					$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
+					$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 					?>
 					<li class="product <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
 						<?php
@@ -72,12 +71,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php if ( ! $_product->is_visible() ) : ?>
 							<?php echo str_replace( array( 'http:', 'https:' ), '', $thumbnail ) . $product_name . '&nbsp;'; ?>
 						<?php else : ?>
-							<a href="<?php echo esc_url( $_product->get_permalink( $cart_item ) ); ?>" class="product_thumbnail_wrap">
+							<a href="<?php echo esc_url( $product_permalink ); ?>" class="product_thumbnail_wrap">
 								<?php echo str_replace( array( 'http:', 'https:' ), '', $thumbnail ); ?>
 							</a>
 						<?php endif; ?>
 						<div class="product_text">
-                            <h3><a href="<?php echo esc_url( $_product->get_permalink( $cart_item ) ); ?>"><?php echo esc_html( $product_name ); ?></a></h3>
+                            <h3><a href="<?php echo esc_url( $product_permalink ); ?>"><?php echo esc_html( $product_name ); ?></a></h3>
 
                             <?php echo WC()->cart->get_item_data( $cart_item ); ?>
 
@@ -92,7 +91,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php else : ?>
 
-		<li class="empty"><?php esc_html_e( 'No products in the cart.', 'ocin-lite' ); ?></li>
+		<li class="empty woocommerce-mini-cart__empty-message"><?php esc_html_e( 'No products in the cart.', 'ocin-lite' ); ?></li>
 
 	<?php endif; ?>
 
