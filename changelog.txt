@@ -1,3 +1,8 @@
+* 1.0.19 - 23/03/2018
+====================
+- Improved: CSS Breakpoint on small desktop screens
+
+
 * 1.0.18 - 26/02/2018
 ====================
 - Added: Support for WooCommerce 3.3

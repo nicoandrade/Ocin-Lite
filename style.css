@@ -4,7 +4,7 @@ Theme URI: https://www.quemalabs.com/theme/ocin-lite/
 Author: Quema Labs
 Author URI: https://www.quemalabs.com/
 Description: Ocin Lite is a beautiful WooCommerce theme perfect for modern and clean online shops. With a responsive design will make your online store  look great on all devices.
-Version: 1.0.18
+Version: 1.0.19
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Text Domain: ocin-lite
@@ -2373,7 +2373,7 @@ Payments Options
   -webkit-box-shadow: 0 3px 8px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0 3px 8px 1px rgba(0, 0, 0, 0.1);
 }
-@media (min-width: 1346px) and (max-width: 1509px) {
+@media (min-width: 1270px) and (max-width: 1509px) {
   .woocommerce #main .products .product,
   .woocommerce-page .products .product {
     width: 24%;
@@ -2384,7 +2384,7 @@ Payments Options
     margin-bottom: 7px;
   }
 }
-@media (min-width: 768px) and (max-width: 1345px) {
+@media (min-width: 768px) and (max-width: 1269px) {
   .woocommerce #main .products .product,
   .woocommerce-page .products .product {
     width: 48%;
@@ -5382,7 +5382,7 @@ a img.aligncenter {
 .align_text1.ult-ib-resp.ult-ib-effect-style9 h2 {
   padding-top: 22%;
 }
-@media (min-width: 768px) and (max-width: 1345px) {
+@media (min-width: 768px) and (max-width: 1269px) {
   .align_text1.ult-ib-resp.ult-ib-effect-style9 h2 {
     font-size: 16px !important;
     font-size: 1rem !important;
@@ -6120,7 +6120,7 @@ textarea {
 	// Small Breakpoint
 	// ------------------
 	*/
-@media (min-width: 768px) and (max-width: 1345px) {
+@media (min-width: 768px) and (max-width: 1269px) {
   .container {
     width: 96%;
   }
@@ -6199,7 +6199,7 @@ textarea {
 	// Medium Breakpoint
 	// ------------------
 	*/
-@media (min-width: 1346px) and (max-width: 1509px) {
+@media (min-width: 1270px) and (max-width: 1509px) {
   /*
 	Header
 	--------------------------------
