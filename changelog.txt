@@ -1,3 +1,14 @@
+* 1.0.21 - 07/09/2019
+====================
+- Added: Support for WooCommerce 3.7
+- Improved: Styles for mini cart
+
+
+* 1.0.20 - 05/11/2018
+====================
+- Added: Support for WooCommerce 3.5
+
+
 * 1.0.19 - 23/03/2018
 ====================
 - Improved: CSS Breakpoint on small desktop screens
